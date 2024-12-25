@@ -27,4 +27,4 @@ COPY --from=build /out .
 EXPOSE 80
 
 # Set the entry point for the container
-ENTRYPOINT ["dotnet", "dotnet-hello-world.sln"]
+ENTRYPOINT ["dotnet", "hello-world-api"]
