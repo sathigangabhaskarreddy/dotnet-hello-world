@@ -15,7 +15,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t bhaskar/cicd-e2e:${BUILD_NUMBER} .
+                    docker build -t bhaskar7669/bhaskar_docker:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push bhaskar/cicd-e2e:${BUILD_NUMBER}
+                    docker push bhaskar7669/bhaskar_docker:${BUILD_NUMBER}
                     '''
                 }
             }
