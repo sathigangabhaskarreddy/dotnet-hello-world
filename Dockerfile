@@ -15,24 +15,3 @@ RUN dotnet restore "dotnet-hello-world.sln"
 
 # Step 6: Copy the remaining files (source code) to the container
 COPY . .
-
-# Step 7: Build the solution in Release mode
-RUN dotnet build "dotnet-hello-world.sln" -c Release -o /app/build
-
-# Step 8: Publish the application to prepare it for deployment
-RUN dotnet publish "dotnet-hello-world.sln" -c Release -o /app/publish
-
-# Step 9: Use a smaller runtime image for the final image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
-
-# Step 10: Set the working directory for the final image
-WORKDIR /app
-
-# Step 11: Copy the published app from the build image
-COPY --from=build /app/publish .
-
-# Step 12: Expose the port the app will run on (default is 80)
-EXPOSE 80
-
-# Step 13: Set the entry point to run the application
-ENTRYPOINT ["dotnet", "dotnet-hello-world.sln.dll"]
