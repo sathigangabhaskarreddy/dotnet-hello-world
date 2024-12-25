@@ -4,12 +4,8 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the csproj file and restore the dependencies (via NuGet)
-COPY *.csproj ./
-RUN dotnet restore
-
 # Copy the entire source code into the container
-COPY . ./
+COPY . .
 
 # Publish the application to the /out folder in the container
 RUN dotnet publish -c Release -o /out
