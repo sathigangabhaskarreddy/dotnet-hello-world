@@ -24,11 +24,13 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
+                    withDockerRegistry(credentialsId: 'Docker'){
                     sh '''
                     echo 'Push to Repo'
                     docker push bhaskar7669/bhaskar_docker:${BUILD_NUMBER}
                     '''
                 }
+                }     
             }
         }
         
