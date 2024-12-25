@@ -17,6 +17,7 @@ pipeline {
                     echo 'Buid Docker Image'
                     docker build -t bhaskar/cicd-e2e:${BUILD_NUMBER} .
                     docker push bhaskar/cicd-e2e:${BUILD_NUMBER}
+                    '''
                 }
             }
         }
