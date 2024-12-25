@@ -16,6 +16,15 @@ pipeline {
                     sh '''
                     echo 'Buid Docker Image'
                     docker build -t bhaskar/cicd-e2e:${BUILD_NUMBER} .
+                    '''
+                }
+            }
+        }
+        stage('Push the artifacts'){
+           steps{
+                script{
+                    sh '''
+                    echo 'Push to Repo'
                     docker push bhaskar/cicd-e2e:${BUILD_NUMBER}
                     '''
                 }
