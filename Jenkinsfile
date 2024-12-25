@@ -7,7 +7,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main', credentialsId: 'Github', url: 'https://github.com/sathigangabhaskarreddy/dotnet-hello-world.git'
+                git 'https://github.com/sathigangabhaskarreddy/dotnet-hello-world.git'
             }
         }
     }
