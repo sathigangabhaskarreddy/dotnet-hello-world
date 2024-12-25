@@ -10,25 +10,5 @@ pipeline {
                 git branch: 'main', credentialsId: 'Github', url: 'https://github.com/sathigangabhaskarreddy/dotnet-hello-world.git'
             }
         }
-        stage('Build Docker'){
-            steps{
-                script{
-                    sh '''
-                    echo 'Buid Docker Image'
-                    docker build -t bhaskar/cicd-e2e:${BUILD_NUMBER} .
-                    '''
-                }
-            }
-        }
-        stage('Push the artifacts'){
-           steps{
-                script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push bhaskar/cicd-e2e:${BUILD_NUMBER}
-                    '''
-                }
-            }
-        }
     }
 }
